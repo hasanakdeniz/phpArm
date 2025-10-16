@@ -1,6 +1,6 @@
 services:
   db:
-    image: yobasystems/alpine-mariadb
+    image: arm64v8/mariadb:11
     environment:
       MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MARIADB_DATABASE}
@@ -21,7 +21,7 @@ services:
     restart: unless-stopped
 
   nginx:
-    image: nginx:alpine
+    image: arm64v8/nginx:alpine
     ports:
       - 80
       - 443

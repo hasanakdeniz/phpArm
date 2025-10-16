@@ -1,0 +1,45 @@
+services:
+  db:
+    image: yobasystems/alpine-mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MARIADB_DATABASE}
+      MYSQL_USER: ${MARIADB_USER}
+      MYSQL_PASSWORD: ${MARIADB_PASSWORD}
+    volumes:
+      - data-db:/var/lib/mysql
+    restart: unless-stopped
+    
+  php:
+    build:
+      context: .
+      dockerfile: php.Dockerfile
+    volumes:
+      - ./app:/var/www/html
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 80
+      - 443
+    volumes:
+      - ./app:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - php
+    restart: unless-stopped
+
+  sftp:
+    image: atmoz/sftp:alpine
+    ports:
+      - "${SFTP_PORT}"
+    volumes:
+      - ./app:/home/${SFTP_USER}/upload
+    command: sh -c "cd / && apk update && apk add -q --no-cache nano && chown -R 1001:100 /home/${SFTP_USER}/upload && /entrypoint \'${SFTP_USER}:${SFTP_PASSWORD}:1001:100:/upload\'"
+    restart: unless-stopped
+
+volumes:
+  data-db:

@@ -1,4 +1,4 @@
-FROM php:8.3-fpm-alpine
+FROM arm64v8/php:8.3-fpm-alpine
 
 # Sistem bağımlılıklarını yükle
 RUN apk add --no-cache \

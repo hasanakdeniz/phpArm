@@ -38,7 +38,7 @@ services:
       - "${SFTP_PORT}"
     volumes:
       - ./app:/home/${SFTP_USER}/upload
-    command: ${SFTP_USER}:${SFTP_PASSWORD}::/upload
+    command: ${SFTP_USER}:${SFTP_PASSWORD}:1001
     restart: unless-stopped
 
 

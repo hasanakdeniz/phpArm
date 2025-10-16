@@ -38,7 +38,7 @@ services:
       - 2222
     volumes:
       - ./app:/home/${SFTP_USER}/upload
-    command: ${SFTP_USER}:${SFTP_PASSWORD}:1001
+    command: test:test:1001
     restart: unless-stopped
 
 

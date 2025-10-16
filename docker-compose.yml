@@ -32,14 +32,21 @@ services:
       - php
     restart: unless-stopped
 
-  sftp:
+    sftp:
     image: atmoz/sftp:alpine
     ports:
       - "${SFTP_PORT}"
     volumes:
       - ./app:/home/${SFTP_USER}/upload
-    command: sh -c "cd / && apk update && apk add -q --no-cache nano && chown -R 1001:100 /home/${SFTP_USER}/upload && /entrypoint \'${SFTP_USER}:${SFTP_PASSWORD}:1001:100:/upload\'"
+    command: >
+      /bin/sh -c "
+        apk update && 
+        apk add -q --no-cache nano && 
+        chown -R 1001:100 /home/${SFTP_USER}/upload && 
+        /entrypoint ${SFTP_USER}:${SFTP_PASSWORD}:1001:100:/upload
+      "
     restart: unless-stopped
+
 
 volumes:
   data-db:

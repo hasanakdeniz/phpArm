@@ -32,7 +32,7 @@ services:
       - php
     restart: unless-stopped
 
-    sftp:
+  sftp:
     image: atmoz/sftp:alpine
     ports:
       - "${SFTP_PORT}"

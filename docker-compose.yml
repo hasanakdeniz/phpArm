@@ -39,7 +39,7 @@ services:
     volumes:
       - ./sftp/sftp.json:/app/config/sftp.json:ro
       - ./app:/home/${test}
-    command: sh -c "echo /app/config/sftp.json asd"
+    command: sh -c "echo 'selam' > /app/config/sftp.json"
     restart: unless-stopped
 
 

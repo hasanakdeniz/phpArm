@@ -35,7 +35,7 @@ services:
   sftp:
     image: emberstack/sftp:5.1.71-arm64v8
     ports:
-      - "24:22"
+      - "23:22"
     volumes:
       - ./sftp/sftp.json:/app/config/sftp.json:ro
       - ./app:/home

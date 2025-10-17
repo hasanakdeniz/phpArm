@@ -33,12 +33,12 @@ services:
     restart: unless-stopped
 
   sftp:
-    image: atmoz/sftp:alpine
+    image: emberstack/sftp:5.1.71-arm64v8
     ports:
-      - 2222
+      - "23:22"
     volumes:
-      - ./app:/home/${SFTP_USER}/upload
-    command: test:test:1001:100
+      - ./sftp/sftp.json:/app/config/sftp.json:ro
+      - ./app:/home
     restart: unless-stopped
 
 

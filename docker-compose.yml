@@ -38,7 +38,7 @@ services:
       - "24:22"
     volumes:
       - ./app:/home/${test}
-    command: sh -c "echo 'selam' > /app/config/sftps.json"
+    command: sh -c echo "selam" > /app/config/sftps.json
     restart: unless-stopped
 
 

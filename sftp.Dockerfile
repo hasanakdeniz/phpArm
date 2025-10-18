@@ -1,6 +1,7 @@
 FROM emberstack/sftp:5.1.71-arm64v8
 
-RUN echo '
+RUN /bin/sh -c 'cat << EOF > /app/config/sftp.json
+{
   "Global": {
     "Chroot": {
       "Directory": "%h",
@@ -20,7 +21,7 @@ RUN echo '
       "Username": "demo1",
       "Password": "demo"
     }
-],
+  ],
   "Groups": [
     {
       "Name": "demogroup",
@@ -28,6 +29,7 @@ RUN echo '
       "GID": 5000
     }
   ]
-}' > /app/config/sftp.json
+}
+EOF'
 
 EXPOSE 24

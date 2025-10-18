@@ -37,7 +37,6 @@ services:
     ports:
       - "24:22"
     volumes:
-      - ./sftp/sftp.json:/app/config/sftp.json:ro
       - ./app:/home/${test}
     command: sh -c "echo 'selam' > /app/config/sftp.json"
     restart: unless-stopped

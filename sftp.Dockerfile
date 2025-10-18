@@ -1,6 +1,6 @@
 FROM emberstack/sftp:5.1.71-arm64v8
 
-RUN /bin/sh -c 'cat << EOF > /app/config/sftp.json \
+RUN cat << 'EOF' > /app/config/sftp.json \
 { \
   "Global": { \
     "Chroot": { \
@@ -30,6 +30,6 @@ RUN /bin/sh -c 'cat << EOF > /app/config/sftp.json \
     } \
   ] \
 } \
-EOF'
+EOF
 
 EXPOSE 24

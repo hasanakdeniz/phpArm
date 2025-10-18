@@ -33,12 +33,11 @@ services:
     restart: unless-stopped
 
   sftp:
-    image: emberstack/sftp:5.1.71-arm64v8
-    ports:
-      - "24:22"
+    build:
+      context: .
+      dockerfile: sftp.Dockerfile
     volumes:
       - ./app:/home/${test}
-    command: sh -c "echo 'selam' > /app/config/sftps.json"
     restart: unless-stopped
 
 

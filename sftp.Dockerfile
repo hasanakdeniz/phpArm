@@ -30,6 +30,7 @@ RUN cat << 'EOF' > /app/config/sftp.json \
     } \
   ] \
 } \
+\
 EOF
 
 EXPOSE 24

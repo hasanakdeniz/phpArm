@@ -36,10 +36,10 @@ services:
     build:
       context: .
       dockerfile: sftp.Dockerfile
+      args:
+        TEST: ${test}
     ports:
       - "24:22"
-    args:
-      TEST: ${test}
     volumes:
       - ./app:/home/${test}
     restart: unless-stopped

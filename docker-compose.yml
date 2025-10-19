@@ -38,6 +38,8 @@ services:
       dockerfile: sftp.Dockerfile
     ports:
       - "24:22"
+    args:
+      TEST: ${test}
     volumes:
       - ./app:/home/${test}
     restart: unless-stopped

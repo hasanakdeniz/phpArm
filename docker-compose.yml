@@ -37,11 +37,11 @@ services:
       context: .
       dockerfile: sftp.Dockerfile
       args:
-        TEST: ${test}
+        TEST: ${SFTP_USER}
     ports:
       - "${SFTP_PORT}"
     volumes:
-      - ./app:/home/${test}/sftp
+      - ./app:/home/${SFTP_USER}/sftp
     restart: unless-stopped
 
 

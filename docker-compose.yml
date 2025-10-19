@@ -39,7 +39,7 @@ services:
       args:
         TEST: ${test}
     ports:
-      - "24:22"
+      - "${SFTP_PORT}"
     volumes:
       - ./app:/home/${test}
     restart: unless-stopped

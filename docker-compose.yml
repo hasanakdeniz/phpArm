@@ -41,7 +41,7 @@ services:
     ports:
       - "${SFTP_PORT}"
     volumes:
-      - ./app:/home/${test}
+      - ./app:/home/${test}/sftp
     restart: unless-stopped
 
 

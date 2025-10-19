@@ -37,7 +37,8 @@ services:
       context: .
       dockerfile: sftp.Dockerfile
       args:
-        TEST: ${SFTP_USER}
+        SFTP_USER_DF: ${SFTP_USER}
+        SFTP_PASSWORD_DF: ${SFTP_PASSWORD}
     ports:
       - "${SFTP_PORT}"
     volumes:

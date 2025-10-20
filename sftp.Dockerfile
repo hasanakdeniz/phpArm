@@ -7,3 +7,5 @@ RUN echo '{"Global":{"Chroot":{"Directory":"%h","StartPath":"sftp"},"Directories
 RUN groupadd -g 1001 ${SFTP_USER_DF} && \
     useradd -u 1000 -g 1001 -m -s /bin/bash -N ${SFTP_USER_DF} && \
     chown -R 1000:1001 /home/${SFTP_USER_DF}
+
+CMD chown -R 1000:1001 /home/${SFTP_USER_DF} && /usr/bin/supervisord -c /app/supervisord.conf

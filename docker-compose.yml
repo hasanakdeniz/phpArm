@@ -39,7 +39,6 @@ services:
       args:
         SFTP_USER_DF: ${SFTP_USER}
         SFTP_PASSWORD_DF: ${SFTP_PASSWORD}
-    user: "1000:1001"
     ports:
       - "${SFTP_PORT}"
     volumes:

@@ -36,6 +36,7 @@ services:
     build:
       context: .
       dockerfile: sftp.Dockerfile
+      user: "1000:1001"
       args:
         SFTP_USER_DF: ${SFTP_USER}
         SFTP_PASSWORD_DF: ${SFTP_PASSWORD}

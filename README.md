@@ -21,5 +21,3 @@ setup
   - Advanced
     - Enable Isolated Deployment
       - Enable
-
-#sudosu
